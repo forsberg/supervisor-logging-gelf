@@ -28,12 +28,12 @@ try:
     requirements = open('requirements.txt')
     test_requirements = open('test_requirements.txt')
     setup(
-        name='supervisor-logging',
-        version='0.0.8',
-        description='Stream supervisord logs to a syslog instance',
-        author='Infoxchange development team',
-        author_email='devs@infoxchange.net.au',
-        url='https://github.com/infoxchange/supervisor-logging',
+        name='supervisor-logging-gelf',
+        version='0.0.1',
+        description='Stream supervisord logs to a Graylog instance',
+        author='PerformLine Engineering',
+        author_email='nathan@performline.com',
+        url='https://github.com/PerformLine/supervisor-logging-gelf',
         license='Apache 2.0',
         long_description=open('README.md').read(),
 
@@ -51,7 +51,7 @@ try:
             },
         entry_points={
             'console_scripts': [
-                'supervisor_logging = supervisor_logging:main',
+                'supervisor_logging_gelf = supervisor_logging_gelf:main',
                 ],
             },
 
