@@ -1,4 +1,4 @@
-Supervisor-logging
+supervisor-logging-gelf
 ==================
 
 A [supervisor] plugin to stream events to an external Graylog instance.
@@ -7,9 +7,7 @@ Installation
 ------------
 
 ```
-git clone https://github.com/peterfroehlich/supervisor-logging.git
-cd supervisor-logging
-python setup.py install
+pip install -e git+https://github.com/PerformLine/supervisor-logging-gelf#egg=supervisor-logging-gelf
 ```
 
 Usage
@@ -21,12 +19,16 @@ variables:
 * `GRAYLOG_SERVER`
 * `GRAYLOG_PORT`
 
-Add the plugin as an event listener:
+You can set the variables up in the config below as well.
+
+Add the plugin as an event listener in your main `supervisor.conf` of in a conf.d file like `/etc/supervisor/conf.d/logging.conf`:
 
 ```
 [eventlistener:logging]
-command = supervisor_logging
+command = supervisor_logging_gelf
+environment = GRAYLOG_SERVER=logs.myserver.com,GRAYLOG_PORT=12201
 events = PROCESS_LOG
+buffer_size = 1024
 ```
 
 Enable the log events in your program:
