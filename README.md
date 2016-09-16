@@ -7,7 +7,7 @@ Installation
 ------------
 
 ```
-pip install -e git+https://github.com/PerformLine/supervisor-logging-gelf#egg=supervisor-logging-gelf
+pip install supervisor-logging-gelf
 ```
 
 Usage
