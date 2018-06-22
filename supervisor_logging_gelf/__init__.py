@@ -47,6 +47,9 @@ def eventdata(payload):
     Parse a Supervisor event.
     """
 
+    if not payload.endswith('\n'):
+        payload += '\n'
+
     headerinfo, data = payload.split('\n', 1)
     headers = get_headers(headerinfo)
     return headers, data
@@ -128,12 +131,11 @@ def main():
             args=(),
             exc_info=None,
             )
-        event.process = int(event_headers['pid'])
 
         # Set the processName to the name of the value of 'program:name' in the
         # supervisor config.
         event.processName = event_headers['groupname']
-        handler.handle(event)
+        event.process = int(event_headers['pid']) if 'pid' in event_headers else 0
 
 
 if __name__ == '__main__':
