@@ -1,2 +1,2 @@
 supervisor
-graypy==v1.2.0
+graypy==1.2.0
